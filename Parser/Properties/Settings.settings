@@ -1,0 +1,24 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Parser.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="rowXPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">//MSISDNSET</Value>
+    </Setting>
+    <Setting Name="phoneXPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">//MSISDN</Value>
+    </Setting>
+    <Setting Name="telServeXPhath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">//MSISDNROW[CHARGE_TYPE = 'Абонплата']/CHARGE_SUM</Value>
+    </Setting>
+    <Setting Name="callServeXPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">//MSISDNROW[CHARGE_GROUP = 'Итого начисления']/CHARGE_SUM</Value>
+    </Setting>
+    <Setting Name="othersServeXPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">//MSISDNROW[CHARGE_GROUP = 'Итого начисления']/CHARGE_SUM</Value>
+    </Setting>
+    <Setting Name="summXPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+  </Settings>
+</SettingsFile>
