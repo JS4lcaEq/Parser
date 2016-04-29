@@ -55,6 +55,7 @@ namespace Parser
             try
             {
                 doc.Load(stream);
+                stream.Close();
                 if (onSuccessXmlOpen != null)
                 {
                     XmlNode root = doc.DocumentElement;

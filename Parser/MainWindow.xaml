@@ -6,9 +6,9 @@
         xmlns:local="clr-namespace:Parser"
         xmlns:Properties="clr-namespace:Parser.Properties" x:Class="Parser.MainWindow"
         mc:Ignorable="d"
-        Title="Exel parser" Height="350" Width="622">
+        Title="XML анализатор" Height="350" Width="622">
     <Window.Resources>
-        <local:InterfaceData x:Key="tb" Text="file to parse" IsInProgress="False" ProgressVisible="Hidden" Log="Log" Progress="0" />
+        <local:InterfaceData x:Key="tb" Text="файл для анализа" IsInProgress="False" ProgressVisible="Hidden" Log="Log" Progress="0" />
     </Window.Resources>
     <Grid DataContext="{DynamicResource tb}">
         <Grid.ColumnDefinitions>
@@ -20,7 +20,7 @@
         <TextBox x:Name="textBox" Text="{Binding Text}" Height="23" Margin="142,27,96,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
         <ProgressBar x:Name="pb1" HorizontalAlignment="Left" Height="11" Margin="20,6,0,0" VerticalAlignment="Top" Width="565" IsIndeterminate="{Binding IsInProgress}" Visibility="{Binding ProgressVisible}" Grid.ColumnSpan="2" />
         <TextBlock x:Name="tbLog" Margin="20,71,29,19" TextWrapping="Wrap" Text="{Binding Log}" Grid.ColumnSpan="2"/>
-        <TextBox x:Name="tbProgress" HorizontalAlignment="Left" Height="23" Margin="320,27,0,0" TextWrapping="Wrap" Text="{Binding Progress}" VerticalAlignment="Top" Width="70" Grid.Column="1"/>
+        <CheckBox x:Name="checkBox" Content="отладка" Grid.Column="1" HorizontalAlignment="Left" Margin="313,32,0,0" VerticalAlignment="Top" Checked="checkBox_Checked" Unchecked="checkBox_Unchecked"/>
 
     </Grid>
 </Window>

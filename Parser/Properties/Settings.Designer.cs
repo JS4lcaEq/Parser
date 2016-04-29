@@ -37,7 +37,7 @@ namespace Parser.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("//MSISDN")]
+        [global::System.Configuration.DefaultSettingValueAttribute("MSISDNROW/MSISDN")]
         public string phoneXPath {
             get {
                 return ((string)(this["phoneXPath"]));
@@ -49,7 +49,7 @@ namespace Parser.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("//MSISDNROW[CHARGE_TYPE = \'Абонплата\']/CHARGE_SUM")]
+        [global::System.Configuration.DefaultSettingValueAttribute("MSISDNROW[CHARGE_TYPE = \'Абонплата\']/CHARGE_SUM")]
         public string telServeXPhath {
             get {
                 return ((string)(this["telServeXPhath"]));
@@ -85,13 +85,121 @@ namespace Parser.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("MSISDNROW[CHARGE_GROUP = \'Итого начисления\']/CHARGE_SUM")]
         public string summXPath {
             get {
                 return ((string)(this["summXPath"]));
             }
             set {
                 this["summXPath"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("//CLIENTROW")]
+        public string clientsRowXPath {
+            get {
+                return ((string)(this["clientsRowXPath"]));
+            }
+            set {
+                this["clientsRowXPath"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("MSISDNROW/CLNT_ID")]
+        public string clientIdXPath {
+            get {
+                return ((string)(this["clientIdXPath"]));
+            }
+            set {
+                this["clientIdXPath"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("MSISDNROW/NAME")]
+        public string clientNameXPath {
+            get {
+                return ((string)(this["clientNameXPath"]));
+            }
+            set {
+                this["clientNameXPath"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("OB_SDATE")]
+        public string clientStartXPath {
+            get {
+                return ((string)(this["clientStartXPath"]));
+            }
+            set {
+                this["clientStartXPath"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("OB_EDATE")]
+        public string clientEndXPath {
+            get {
+                return ((string)(this["clientEndXPath"]));
+            }
+            set {
+                this["clientEndXPath"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("CHARGE_GROUP")]
+        public string groupXPath {
+            get {
+                return ((string)(this["groupXPath"]));
+            }
+            set {
+                this["groupXPath"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("CHARGE_TYPE")]
+        public string typeXPath {
+            get {
+                return ((string)(this["typeXPath"]));
+            }
+            set {
+                this["typeXPath"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("MSISDNROW")]
+        public string dataRowXPath {
+            get {
+                return ((string)(this["dataRowXPath"]));
+            }
+            set {
+                this["dataRowXPath"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("CHARGE_SUM")]
+        public string valueXPath {
+            get {
+                return ((string)(this["valueXPath"]));
+            }
+            set {
+                this["valueXPath"] = value;
             }
         }
     }

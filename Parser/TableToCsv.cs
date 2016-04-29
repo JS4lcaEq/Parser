@@ -18,7 +18,7 @@ namespace Parser
                 {
                     sb.Append(";");
                 }
-                sb.AppendFormat(@"""{0}""",col.ColumnName);
+                sb.AppendFormat(@" {0} ",col.ColumnName);
             }
 
             foreach (DataRow row in dt.Rows)
@@ -31,7 +31,7 @@ namespace Parser
                     {
                         sb.Append(";");
                     }
-                    sb.AppendFormat(@"""{0}""", row[col.ColumnName]);
+                    sb.AppendFormat(@" {0} ", row[col.ColumnName]);
                 }
             }
 

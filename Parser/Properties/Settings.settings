@@ -6,10 +6,10 @@
       <Value Profile="(Default)">//MSISDNSET</Value>
     </Setting>
     <Setting Name="phoneXPath" Type="System.String" Scope="User">
-      <Value Profile="(Default)">//MSISDN</Value>
+      <Value Profile="(Default)">MSISDNROW/MSISDN</Value>
     </Setting>
     <Setting Name="telServeXPhath" Type="System.String" Scope="User">
-      <Value Profile="(Default)">//MSISDNROW[CHARGE_TYPE = 'Абонплата']/CHARGE_SUM</Value>
+      <Value Profile="(Default)">MSISDNROW[CHARGE_TYPE = 'Абонплата']/CHARGE_SUM</Value>
     </Setting>
     <Setting Name="callServeXPath" Type="System.String" Scope="User">
       <Value Profile="(Default)">//MSISDNROW[CHARGE_GROUP = 'Итого начисления']/CHARGE_SUM</Value>
@@ -18,7 +18,34 @@
       <Value Profile="(Default)">//MSISDNROW[CHARGE_GROUP = 'Итого начисления']/CHARGE_SUM</Value>
     </Setting>
     <Setting Name="summXPath" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">MSISDNROW[CHARGE_GROUP = 'Итого начисления']/CHARGE_SUM</Value>
+    </Setting>
+    <Setting Name="clientsRowXPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">//CLIENTROW</Value>
+    </Setting>
+    <Setting Name="clientIdXPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">MSISDNROW/CLNT_ID</Value>
+    </Setting>
+    <Setting Name="clientNameXPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">MSISDNROW/NAME</Value>
+    </Setting>
+    <Setting Name="clientStartXPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">OB_SDATE</Value>
+    </Setting>
+    <Setting Name="clientEndXPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">OB_EDATE</Value>
+    </Setting>
+    <Setting Name="groupXPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">CHARGE_GROUP</Value>
+    </Setting>
+    <Setting Name="typeXPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">CHARGE_TYPE</Value>
+    </Setting>
+    <Setting Name="dataRowXPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">MSISDNROW</Value>
+    </Setting>
+    <Setting Name="valueXPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">CHARGE_SUM</Value>
     </Setting>
   </Settings>
 </SettingsFile>
