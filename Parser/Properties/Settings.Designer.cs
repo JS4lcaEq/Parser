@@ -202,5 +202,29 @@ namespace Parser.Properties {
                 this["valueXPath"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("KOLVO")]
+        public string countXPath {
+            get {
+                return ((string)(this["countXPath"]));
+            }
+            set {
+                this["countXPath"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("ED_IZM")]
+        public string measureXPath {
+            get {
+                return ((string)(this["measureXPath"]));
+            }
+            set {
+                this["measureXPath"] = value;
+            }
+        }
     }
 }

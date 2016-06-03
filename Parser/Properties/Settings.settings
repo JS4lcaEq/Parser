@@ -47,5 +47,11 @@
     <Setting Name="valueXPath" Type="System.String" Scope="User">
       <Value Profile="(Default)">CHARGE_SUM</Value>
     </Setting>
+    <Setting Name="countXPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">KOLVO</Value>
+    </Setting>
+    <Setting Name="measureXPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ED_IZM</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

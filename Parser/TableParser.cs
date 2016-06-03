@@ -71,6 +71,21 @@ namespace Parser
             return dt;
         }
 
+        private DataTable createLongReportDataTable()
+        {
+            DataTable dt = new DataTable();
+            dt.Columns.Add(new DataColumn() { ColumnName = "nn", Caption = "#" });
+            dt.Columns.Add(new DataColumn() { ColumnName = "phone_num", Caption = "телефон" });
+            dt.Columns.Add(new DataColumn() { ColumnName = "sim", Caption = "sim" });
+            dt.Columns.Add(new DataColumn() { ColumnName = "day_from", Caption = "dd-mm-yyyy" });
+            dt.Columns.Add(new DataColumn() { ColumnName = "day_to", Caption = "dd-mm-yyyy" });
+            dt.Columns.Add(new DataColumn() { ColumnName = "time_title", Caption = "название услуги" });
+            dt.Columns.Add(new DataColumn() { ColumnName = "time_count", Caption = "кол - во" });
+            dt.Columns.Add(new DataColumn() { ColumnName = "time_type", Caption = "тип услуги: 100 - итого, 0 - обслуживание, 1 - факт(SMS), 2 - мин, 3 - сек, 99 - unknown" });
+            dt.Columns.Add(new DataColumn() { ColumnName = "itogo", Caption = "полная стоимость без НДС" });
+            return dt;
+        }
+
         private string getValue(XmlNode node, string xPath)
         {
             string ret = null;
@@ -94,7 +109,7 @@ namespace Parser
             XmlNode subNode = node.SelectSingleNode(xPath);
             if (subNode != null)
             {
-                ret = float.Parse( subNode.InnerText, culture );
+                ret = float.Parse(subNode.InnerText, culture);
             }
             return ret;
         }
@@ -184,7 +199,46 @@ namespace Parser
             return dt;
         }
 
-        public DataTable ParseToLongReport(XmlDocument doc                // xml документ
+        public DataTable ParseToLongReport( XmlDocument doc
+                                            , Dictionary<string, string> startDate
+                                            , Dictionary<string, string> endDate   )
+        {
+            DataTable dt = createLongReportDataTable();
+            XmlNode root = doc.DocumentElement;
+            XmlNodeList rowsNodeList = root.SelectNodes(Properties.Settings.Default.rowXPath);
+            int n = 0;
+            foreach (XmlNode item in rowsNodeList)
+            {
+                n++;
+                string phoneNum = getValue(item, Properties.Settings.Default.phoneXPath);
+                string clientId = getValue(item, Properties.Settings.Default.clientIdXPath);
+                string dayFrom = startDate[clientId];
+                string dayTo = endDate[clientId];
+                XmlNodeList subRowsNodeList = item.SelectNodes(Properties.Settings.Default.dataRowXPath);
+                int nn = 0;
+                foreach (XmlNode subItem in subRowsNodeList)
+                {
+                    nn++;
+                    string group = getValue(subItem, Properties.Settings.Default.groupXPath);
+                    string type = getValue(subItem, Properties.Settings.Default.typeXPath);
+                    string measure = getValue(subItem, Properties.Settings.Default.measureXPath);
+                    DataRow dr = dt.NewRow();
+                    dr["nn"] = String.Format("{0}/{1}", n, nn);
+                    dr["phone_num"] = phoneNum;
+                    dr["sim"] = "sim";
+                    dr["day_from"] = dayFrom;
+                    dr["day_to"] = dayTo;
+                    dr["time_title"] = String.Format("{0}/{1}", group, type);
+                    dr["time_count"] = summValue(subItem, Properties.Settings.Default.countXPath);
+                    dr["time_type"] = String.Format("{0}-{1}-{2}", group, type, measure);
+                    dr["itogo"] = getValue(subItem, Properties.Settings.Default.valueXPath);
+                    dt.Rows.Add(dr);
+                }
+            }
+            return dt;
+        }
+
+        public DataTable ParseToShortReport(XmlDocument doc     // xml документ
                                     , string rowXPath           // путь к строкам
                                     , string phoneXPath         // путь к телефону 
                                     , string telServeXPhath     // путь к абон плата
@@ -192,7 +246,7 @@ namespace Parser
                                     , string othersServeXPath   // путь к стоимость остальных услуг
                                     , string summXPath          // путь к сумме
                                     , string clientIdXPath      // путь к идентификатору клиента
-                                    
+
                                     , Dictionary<string, string> startDate
                                     , Dictionary<string, string> endDate
                                     , bool isDebugMode
@@ -210,7 +264,7 @@ namespace Parser
                 dr["nn"] = nn;
                 dr["phone_num"] = getValue(item, phoneXPath);
                 dr["tel_serve"] = getNumberValue(item, telServeXPhath);
-                dr["call_serve"] = summValue(item, "начисления", "ходящ", isDebugMode);
+                dr["call_serve"] = summValue(item, "начисления", "(ходящ)|(переадр)", isDebugMode);
                 dr["others_serve"] = summValue(item, "начисления", "(sms)|(mms)|(gprs)", isDebugMode);
                 string clientId = getValue(item, clientIdXPath);
                 dr["day_from"] = startDate[clientId];

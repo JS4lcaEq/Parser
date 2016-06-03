@@ -92,7 +92,7 @@ namespace Parser
 
 
 
-            DataTable dt = tp.ParseToLongReport(    doc
+            DataTable dt = tp.ParseToShortReport(    doc
                                                     , Properties.Settings.Default.rowXPath
                                                     , Properties.Settings.Default.phoneXPath
                                                     , Properties.Settings.Default.telServeXPhath
@@ -108,6 +108,9 @@ namespace Parser
 
             System.IO.File.WriteAllText(_cFileName + String.Format(".report_{0:yyyy-MM-dd_HH-mm-ss}.csv", DateTime.Now), sb.ToString(), Encoding.GetEncoding("windows-1251"));
 
+            DataTable dtLong = tp.ParseToLongReport(doc, startDate, endDate);
+            StringBuilder sbLong = TableToCsv.GetString(dtLong);
+            System.IO.File.WriteAllText(_cFileName + String.Format(".longReport_{0:yyyy-MM-dd_HH-mm-ss}.csv", DateTime.Now), sbLong.ToString(), Encoding.GetEncoding("windows-1251"));
 
             Log(String.Format("Анализ завершен, обнаружено телефонов: {0}, клиентов: {1}", dt.Rows.Count, dtClients.Rows.Count));
 
